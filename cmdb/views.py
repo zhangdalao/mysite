@@ -56,3 +56,29 @@ def login(request):
         return render(request, 'login.html')
     elif request.method == "GET":
         return render(request,'login.html')
+
+
+from django.views import View
+class Home(View):
+    def dispatch(self, request, *args, **kwargs):
+        # return HttpResponse('ok')
+        print('Before')
+        result = super(Home,self).dispatch(request, *args, **kwargs)
+        print('After')
+        return result
+
+    def get(self,request):
+        print(request.method)
+        return render(request,'home.html')
+
+    def post(self,request):
+
+        self.obj = request.FILES.get('fafa')
+        file_path_1 = os.path.join('upload',self.obj.name)
+        f = open(file_path_1,'wb')
+        for i in self.obj.chunks():
+            f.write(i)
+        f.close()
+
+        #print(request.method,'POST')
+        return render(request,'home.html')
