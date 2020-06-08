@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--
+   <u1>
+        {% for row in user_dict.keys %}
+            <li>{{ row }}</li>
+        {% endfor %}
+    </u1>
+      <u1>
+        {% for row in user_dict.values %}
+            <li>{{ row }}</li>
+        {% endfor %}
+    </u1>
+
+    <u1>
+        {% for k,row in user_dict.items %}
+            <li><a target="_blank" href="/detail/?nid={{ k }}">{{ row.name }}</a></li>
+        {% endfor %}
+    </u1>
+    -->
+    <u1>
+        {% for k,row in user_dict.items %}
+            <li><a target="_blank" href="/detail-{{ k }}.html">{{ row.name }}</a></li>
+        {% endfor %}
+    </u1>
+
+</body>
+</html>

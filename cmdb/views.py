@@ -5,8 +5,33 @@ import os
 from django.core.files.uploadedfile import InMemoryUploadedFile
 # Create your views here.
 
+# USER_DICT = {
+#     'k1':'root1',
+#     'k2': 'root2',
+#     'k3': 'root3',
+#     'k4': 'root4',
+# }
+USER_DICT = {
+    '1':{'name' : 'root1', 'email': 'root@live.com'},
+    '2': {'name': 'root2', 'email': 'root@live.com'},
+    '3': {'name': 'root3', 'email': 'root@live.com'},
+    '4': {'name': 'root4', 'email': 'root@live.com'},
+
+}
+
 def index(requset):
-    return HttpResponse('Index')
+    #return HttpResponse('Index')
+
+    return render(requset,'index.html',{'user_dict':USER_DICT})
+
+def detail(request,nid):
+    #return HttpResponse(nid)
+
+    # nid = request.GET.get('nid')
+    #
+    detail_info = USER_DICT[nid]
+
+    return render(request,'detail.html',{'detail_info':detail_info})
 
 
 # def login(request):
@@ -31,6 +56,7 @@ def index(requset):
 #             error_msg = '用户名或密码错误'
 #
 #     return render(request,'login.html',{'error_msg':error_msg})  #再定义一个字典 把html里面替换为error_msg
+
 
 def login(request):
     # 包含用户提交的所有信息

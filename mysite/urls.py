@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.urls import re_path
 from cmdb import views
 
 urlpatterns = [
@@ -22,4 +23,7 @@ urlpatterns = [
     path('index/', views.index),
     path('login/', views.login),
     path('home/', views.Home.as_view()),
+    #path('detail/', views.detail),
+    re_path(r'detail-(\d+).html', views.detail),
+
 ]
